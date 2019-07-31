@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+	<title>Fluid Sim</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="canvasBox">
+		<canvas id="m'Canvas" width="500" height="500" ></canvas>	
+	</div>
+	<div class="buttonBox">
+		<button id="drop">Increase Elevation</button>
+		<button id="dig">Decrease Elevation</button>
+		<button id="pour">Pour Water</button>
+		<button id="siphon">Siphon Water</button>
+		<button id="run_sim">Run Simulation</button>
+		<button id="end_sim">End Simulation</button>
+		Brush Width:
+		<select onchange="updatebrush()" id="brush">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+		</select>
+	</div>
+	<p style="align-content: center; text-justify:inter-cluster;">This project was made entirely with vanilla JS. It definitely isn't perfect, but
+	it's how I'd imagine water should behave in a cube world such as Minecraft. The biggest issue with it at the moment
+	is that the water has a bias for moving up and to the left, which is simply the first direction the code looks in.
+	If I was working on this full time I'd add actual velocity and acceleration.</p>
+
+	<script src="controller.js"></script>
+</body>

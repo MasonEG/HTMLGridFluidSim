@@ -1,0 +1,14 @@
+canvas {
+	border: 3px solid #000000
+}
+
+.canvasBox {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+.buttonBox {
+	text-align: center;
+	margin: 10px;
+}
