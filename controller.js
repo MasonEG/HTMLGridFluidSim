@@ -115,6 +115,7 @@ const updatebrush = () => {
 
 const calculateNextState = () => {
 	console.log('running sim');
+	let newState = elements.map(row => {return row.slice()});
 	elements.forEach(row => row.forEach(element => {
 		if(element.water > 0) {
 			let scanIStart = (element.i > 0) ? (element.i - 1): element.i; //we're scanning each adjacent tile
@@ -124,7 +125,7 @@ const calculateNextState = () => {
 			let lowestPoint = element;
 			for (let i = scanIStart; i <= scanIEnd; i++) {
 				for (let j = scanJStart; j <= scanJEnd; j++) {
-					if((i != element.i) && (j != element.j)) {
+					if((i != element.i) || (j != element.j)) {
 						if(trueTypeOf(elements[i][j]) == 'undefined') console.log(`undefined! i: ${i}, j: ${j}`);
 						let lowestWaterHeight = lowestPoint.water + lowestPoint.elevation;
 						let neighborWaterHeight = elements[i][j].water + elements[i][j].elevation;
@@ -133,10 +134,11 @@ const calculateNextState = () => {
 					}
 				}
 			}
-			element.water--;
-			elements[lowestPoint.i][lowestPoint.j].water++;
+			newState[element.i][element.j].water--;
+			newState[lowestPoint.i][lowestPoint.j].water++;
 		}
 	}));
+	elements = newState;
 	drawElements();
 }
 
